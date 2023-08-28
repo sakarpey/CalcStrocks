@@ -6,7 +6,7 @@ public class Main {
         System.out.println("введите строковое выражение");
         Scanner scanner = new Scanner(System.in);
         String str = scanner.nextLine();
-        String[] strings = str.split("\\+");
+       String[] strings = str.split("\\+");
 
         chek(str);
 
@@ -40,7 +40,7 @@ public class Main {
 
                 break;
             default:
-                throw new Exception("введенное выражение не соответствует условиям ввода: выражение должно начинаться с кавычек");
+                throw new Exception("введенное выражение не соответствует условиям ввода: выражение должно начинаться с ковычек");
 
         }
 
@@ -63,20 +63,24 @@ public class Main {
 
         switch (znakAO[0]) { //проверяем знак после оператора
             case '"':
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
                 break;
             default:
                 throw new Exception("введенное выражение не соответствует условиям ввода: знак после оператора может быть только любой из указанных '\"', 1,2,3,4,5,6,7,8,9,10 ");
 
         }
+            String [] arraySplitInput = str.split("[+/*-]");
+            if (znakAO[0] !='"' && arraySplitInput.length>1) throw new Exception("введенное выражение не соответствует условиям ввода: введено более одного знака оператора");
+
+
 //        if (znakAO[0] == 1) {
 //            if (znakAO[1] == 0) ;
 //            else {
