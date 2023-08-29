@@ -33,7 +33,7 @@ public class Main {
             case 2:
                 break;
             default:
-                throw new Exception();
+                throw new Exception("введенное выражение не соответствует условиям ввода");
         }
         switch (arrayChar[0]) { //проверка что первый символ ковычка
             case '"':
