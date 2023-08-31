@@ -20,7 +20,16 @@ public class Main {
     }
 
     public static void chek(String str) throws Exception {
-        char[] arrayChar = str.toCharArray();
+       //переменные для отображения ошибок:
+        String exA = "Введенное выражение не соответствует условиям ввода:";
+        String exKov1 = " ковычки, расставленные в выражении не соответсвуют условию или их нет";
+        String exKov2 = " выражение должно начинаться с ковычек";
+        String exOper1 = " не верный знак оператора - можно использовать только \"+ * - /\"";
+        String exOper2 = " в выражении может быть только один оператор";
+        String exOper3 = " не должно быть пробелов между операндами и оператором";
+        String exAO = " знак после оператора может быть только любой из указанных '\"', 1,2,3,4,5,6,7,8,9,10";
+
+       char[] arrayChar = str.toCharArray();
         int kolKov = 0;
         for (char c : arrayChar) {   //проверка количества ковычек
 
@@ -33,14 +42,14 @@ public class Main {
             case 2:
                 break;
             default:
-                throw new Exception("введенное выражение не соответствует условиям ввода");
+                throw new Exception(exA+exKov1);
         }
         switch (arrayChar[0]) { //проверка что первый символ ковычка
             case '"':
 
                 break;
             default:
-                throw new Exception("введенное выражение не соответствует условиям ввода: выражение должно начинаться с ковычек");
+                throw new Exception(exA+exKov2);
 
         }
 
@@ -55,8 +64,9 @@ public class Main {
             case "+":
             case "-":
                 break;
+            case " ": throw new Exception(exA+exOper3);
             default:
-                throw new Exception("введенное выражение не соответствует условиям ввода: не верный знак оператора - можно использовать только \"+ * - /\" ");
+                throw new Exception(exA+exOper1);
         }
         String stringAfterOperator = str.substring(IndexSymAfterOperator); //получаем строку после оператора "+ * / -"
         char[] stringSymAO = stringAfterOperator.toCharArray(); //делим строку полученную выше на массив символов
@@ -67,7 +77,7 @@ public class Main {
             if (x=='+'||x=='-'||x=='*'||x=='/') znak++;
             if (x=='"') return;
         }
-            if (znak>0) throw new Exception("введенное выражение не соответствует условиям ввода:");
+            if (znak>0) throw new Exception(exA+exOper2);
 
       int z=0; int y=0;
         switch (stringSymAO[0]) { //проверяем символ после оператора
@@ -82,20 +92,16 @@ public class Main {
             case '8':
             case '9':
                 break;
+            case ' ': throw new Exception(exA+exOper3);
             default:
-                throw new Exception("введенное выражение не соответствует условиям ввода: знак после оператора может быть только любой из указанных '\"', 1,2,3,4,5,6,7,8,9,10 ");
+                throw new Exception(exA+exAO);
 
         }
-           if (z==1 && stringSymAO.length>1 && stringSymAO[1]!='0')  throw new Exception("введенное выражение не соответствует условиям ввода: знак после оператора может быть только любой из указанных '\"', 1,2,3,4,5,6,7,8,9,10 ");
+           if (z==1 && stringSymAO.length>1 && stringSymAO[1]!='0')  throw new Exception(exA+exAO);
 
 
 
-           String exA = "Введенное выражение не соответствует условиям ввода:";
-           String exKov1 = "ковычки, расставленные в выражении не соответсвуют условию или их нет";
-           String exKov2 = "выражение должно начинаться с ковычек";
-           String exOper1 = "не верный знак оператора - можно использовать только \"+ * - /\"";
-           String exOper2 = "в выражении может быть только один оператор";
-           String exAO = "знак после оператора может быть только любой из указанных '\"', 1,2,3,4,5,6,7,8,9,10";
+
 
 
 
@@ -103,11 +109,7 @@ public class Main {
 
 
 
-//        if (znakAO[0] == 1) {
-//            if (znakAO[1] == 0) ;
-//            else {
-//                throw new Exception("введенное выражение не соответствует условиям ввода: знак после оператора может быть только любой из указанных '\"', 1,2,3,4,5,6,7,8,9,10 ");
-//            }
+
 
 
     }
