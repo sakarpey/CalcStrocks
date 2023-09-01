@@ -11,7 +11,10 @@ public class Main {
 
 
         Chek.chek(str);
-        String[] strings = str.split("\\+");
+
+
+
+        //        String[] strings = str.split("\\+");
 
     }
 

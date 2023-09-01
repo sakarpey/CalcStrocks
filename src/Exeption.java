@@ -7,4 +7,7 @@ public  class Exeption {
     static String exOper3 = " не должно быть пробелов между операндами и оператором";
     static String exAO = " знак после оператора может быть только любой из указанных '\"', 1,2,3,4,5,6,7,8,9,10";
     static String exDelenie = " делить можно только на число";
+    static String exUmnoghenie = " умножать можно только на число";
+    static String exSlogheniye = " к строке можем прибавить только строку";
+    static String exVychitanie = " из строки можем вычесть только строку";
 }

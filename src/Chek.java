@@ -1,5 +1,5 @@
 public class Chek {
-    public static void chek(String str) throws Exception {
+    public static String[] chek(String str) throws Exception {
 
 
 
@@ -35,11 +35,10 @@ public class Chek {
         String operator = str.substring(IndexOperator, IndexOperator + 1);
         int operZnak = 0;
         switch (operator) {
-            case "*": operZnak=3;break;
-            case "/": operZnak=4;break;
             case "+": operZnak=1;break;
             case "-": operZnak=2;break;
-
+            case "*": operZnak=3;break;
+            case "/": operZnak=4;break;
             case " ": throw new Exception(Exeption.exA+ Exeption.exOper3);
             default:
                 throw new Exception(Exeption.exA+ Exeption.exOper1);
@@ -55,9 +54,9 @@ public class Chek {
         }
         if (znak>0) throw new Exception(Exeption.exA+ Exeption.exOper2);
 
-        int z=0; int  y=0;
+        int z=0; int  kovAfterOperator=0;
         switch (stringSymAO[0]) { //проверяем символ после оператора
-            case '"': y=1;break;
+            case '"': kovAfterOperator=1;break;
             case '1': z=1;break;
             case '2':
             case '3':
@@ -73,15 +72,22 @@ public class Chek {
                 throw new Exception(Exeption.exA+ Exeption.exAO);
 
         }
-        if (z==1 && stringSymAO.length>1 && stringSymAO[1]!='0')  throw new Exception(Exeption.exA+ Exeption.exAO); //проверка на возможное пристутсвите цифры 10 в выпажении и если больше 10 то исключение
+        //проверка на возможное пристутсвите цифры 10 в выражении - и если больше 10, то исключение
+        if (z==1 && stringSymAO.length>1 && stringSymAO[1]!='0')  throw new Exception(Exeption.exA+ Exeption.exAO);
+        if (z==1&& stringSymAO.length>2) throw new Exception(Exeption.exA+ Exeption.exAO);
 
-        if (operZnak == 4 && y==1) throw new Exception(Exeption.exA+Exeption.exDelenie);
+       //проверяем, что операции выполняются согласно первому пункту ТЗ https://github.com/KataAcademy/task-string-calculator.md/blob/abf2b2fe207c9b7c1924f5d8b9fa5a49a47dc5ce/README.md
+        if (operZnak==1 && kovAfterOperator==0) throw new Exception(Exeption.exA+Exeption.exSlogheniye);
+        if (operZnak==2 && kovAfterOperator==0) throw new Exception(Exeption.exA+Exeption.exVychitanie);
+        if (operZnak==3 && kovAfterOperator==1) throw new Exception(Exeption.exA+Exeption.exUmnoghenie);
+        if (operZnak==4 && kovAfterOperator==1) throw new Exception(Exeption.exA+Exeption.exDelenie);
+
+        String firstOperand = str.substring(1,IndexSymTuKov);
+        String tempSecondOperator = str.substring(IndexSymAfterOperator);
+        String secondOperator = tempSecondOperator.replaceAll("\"","");
+        String []arrayExpression = new String [] {firstOperand,operator,secondOperator};
 
 
-
-
-
-
-
+        return arrayExpression;
     }
 }
