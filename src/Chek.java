@@ -35,7 +35,7 @@ public class Chek {
         String operator = str.substring(IndexOperator, IndexOperator + 1);
         int operZnak = 0;
         switch (operator) {
-            case "*": operZnak=3 ;break;
+            case "*": operZnak=3;break;
             case "/": operZnak=4;break;
             case "+": operZnak=1;break;
             case "-": operZnak=2;break;
@@ -51,14 +51,14 @@ public class Chek {
         for (char x:stringSymAO  //в этом цикле проверяем, что в строке после оператора больше нет операторов
         ) {
             if (x=='+'||x=='-'||x=='*'||x=='/') znak++;
-            if (x=='"') return;
+            if (x=='"') break;
         }
         if (znak>0) throw new Exception(Exeption.exA+ Exeption.exOper2);
 
         int z=0; int  y=0;
         switch (stringSymAO[0]) { //проверяем символ после оператора
-            case '"': y=1;
-            case '1': z=1;
+            case '"': y=1;break;
+            case '1': z=1;break;
             case '2':
             case '3':
             case '4':
