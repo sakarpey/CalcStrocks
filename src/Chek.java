@@ -83,9 +83,9 @@ public class Chek {
         if (operZnak==4 && kovAfterOperator==1) throw new Exception(Exeption.exA+Exeption.exDelenie);
 
         String firstOperand = str.substring(1,IndexSymTuKov);
-        String tempSecondOperator = str.substring(IndexSymAfterOperator);
-        String secondOperator = tempSecondOperator.replaceAll("\"","");
-        String []arrayExpression = new String [] {firstOperand,operator,secondOperator};
+        String tempSecondOperand = str.substring(IndexSymAfterOperator);
+        String secondOperand = tempSecondOperand.replaceAll("\"","");
+        String []arrayExpression = new String [] {firstOperand,operator,secondOperand};
 
 
         return arrayExpression;
