@@ -33,12 +33,13 @@ public class Chek {
         int IndexOperator = IndexSymTuKov + 1;  //символ после второй ковычки
         int IndexSymAfterOperator = IndexSymTuKov + 2; //второй символ после второй ковычки
         String operator = str.substring(IndexOperator, IndexOperator + 1);
+        int operZnak = 0;
         switch (operator) {
-            case "*":
-            case "/":
-            case "+":
-            case "-":
-                break;
+            case "*": operZnak=3 ;break;
+            case "/": operZnak=4;break;
+            case "+": operZnak=1;break;
+            case "-": operZnak=2;break;
+
             case " ": throw new Exception(Exeption.exA+ Exeption.exOper3);
             default:
                 throw new Exception(Exeption.exA+ Exeption.exOper1);
@@ -54,7 +55,7 @@ public class Chek {
         }
         if (znak>0) throw new Exception(Exeption.exA+ Exeption.exOper2);
 
-        int z=0; int y=0;
+        int z=0; int  y=0;
         switch (stringSymAO[0]) { //проверяем символ после оператора
             case '"': y=1;
             case '1': z=1;
@@ -73,6 +74,8 @@ public class Chek {
 
         }
         if (z==1 && stringSymAO.length>1 && stringSymAO[1]!='0')  throw new Exception(Exeption.exA+ Exeption.exAO); //проверка на возможное пристутсвите цифры 10 в выпажении и если больше 10 то исключение
+
+        if (operZnak == 4 && y==1) throw new Exception(Exeption.exA+Exeption.exDelenie);
 
 
 
