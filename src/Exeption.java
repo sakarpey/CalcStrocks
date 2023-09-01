@@ -10,4 +10,5 @@ public  class Exeption {
     static String exUmnoghenie = " умножать можно только на число";
     static String exSlogheniye = " к строке можем прибавить только строку";
     static String exVychitanie = " из строки можем вычесть только строку";
+    static String exDlinnStr = " длинна операнда не должна превышать 10 символов между кавычками";
 }

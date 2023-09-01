@@ -10,7 +10,10 @@ public class Main {
         String str = scanner.nextLine();
 
 
-        Chek.chek(str);
+      String[]arrayExpression =  Chek.chek(str);
+        String otvet = Action.action(arrayExpression);
+        System.out.println("\""+otvet+"\"");
+
 
 
 

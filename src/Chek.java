@@ -2,8 +2,6 @@ public class Chek {
     public static String[] chek(String str) throws Exception {
 
 
-
-
         char[] arrayChar = str.toCharArray();
         int kolKov = 0;
         for (char c : arrayChar) {   //проверка количества ковычек
@@ -29,7 +27,7 @@ public class Chek {
         }
 
 
-        int IndexSymTuKov = str.indexOf("\"", 1); //определем индекс второй ковычки в поиске  пропускаем первую
+        int IndexSymTuKov = str.indexOf("\"", 1); //определем индекс второй ковычки - в поиске  пропускаем первую
         int IndexOperator = IndexSymTuKov + 1;  //символ после второй ковычки
         int IndexSymAfterOperator = IndexSymTuKov + 2; //второй символ после второй ковычки
         String operator = str.substring(IndexOperator, IndexOperator + 1);
@@ -82,9 +80,14 @@ public class Chek {
         if (operZnak==3 && kovAfterOperator==1) throw new Exception(Exeption.exA+Exeption.exUmnoghenie);
         if (operZnak==4 && kovAfterOperator==1) throw new Exception(Exeption.exA+Exeption.exDelenie);
 
+        //создаем переменные для массива вида {"str","+","str"} и сам массив. так же проверяем, что длинна строки не превышает 10 символов.
         String firstOperand = str.substring(1,IndexSymTuKov);
         String tempSecondOperand = str.substring(IndexSymAfterOperator);
         String secondOperand = tempSecondOperand.replaceAll("\"","");
+        int f = firstOperand.length(); int s = secondOperand.length();
+        if (f>10||s>10){
+            throw new Exception(Exeption.exA+Exeption.exDlinnStr);
+        }
         String []arrayExpression = new String [] {firstOperand,operator,secondOperand};
 
 
